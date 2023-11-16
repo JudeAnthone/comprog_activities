@@ -38,6 +38,7 @@ int main()
     }
         cout << '\n' << summation << '\n';
          cout << '\n';
+    cout << '\n';
 
     return 0;
 }
