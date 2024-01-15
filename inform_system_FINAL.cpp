@@ -180,105 +180,106 @@ string Generate_ID()
 
 void Edit_Data(string ID)
 {
-  if (User_record == 0)
-  {
-    cout << "ERROR: Data Points to Edit Cannot Be Found! Input Data First.\n";
-  }
-  else
-  {
-    cout << "Enter your ID: ";
-    cin >> ID;
-
-    for (int i = 0; i < User_record; i++)
+    if (User_record == 0)
     {
-
-      if (storage_data[i][6] == ID)
-      {
-        string edit_name, edit_gender, edit_contact, edit_address, edit_email;
-        int edit_age;
-        int edit_choice;
-
-        cout << "Which Data Point Would You Want To Edit?\n";
-        cout << "1. Name\n";
-        cout << "2. Age\n";
-        cout << "3. Gender\n";
-        cout << "4. Contact Number\n";
-        cout << "5. Address\n";
-        cout << "6. Email Address\n";
-
-        cin >> edit_choice;
-
-        switch (edit_choice)
-        {
-        case 1:
-          cout << "Enter a New Name: ";
-          cin >> edit_name;
-          cout << '\n';
-
-          storage_data[i][0] = edit_name;
-
-          cout << "Your New Name is: " << edit_name << '\n';
-          break;
-
-        case 2:
-          cout << "Enter a New Age: ";
-          cin >> edit_age;
-          cout << '\n';
-
-          storage_data[i][1] = edit_age;
-
-          cout << "Your New Age is: " << edit_age << '\n';
-          break;
-
-        case 3:
-          cout << "Enter a New Gender: ";
-          cin >> edit_gender;
-          cout << '\n';
-
-          storage_data[i][2] = edit_gender;
-
-          cout << "Your New Gender is: " << edit_gender << '\n';
-          break;
-
-        case 4:
-          cout << "Enter a New Contact Number: ";
-          cin >> edit_contact;
-          cout << '\n';
-
-          storage_data[i][3] = edit_contact;
-
-          cout << "Your New Contact Number is: " << edit_contact << '\n';
-          break;
-
-        case 5:
-          cout << "Enter a New Address: ";
-          cin >> edit_address;
-          cout << '\n';
-
-          storage_data[i][4] = edit_address;
-
-          cout << "Your New Address is: " << edit_address << '\n';
-          break;
-
-        case 6:
-          cout << "Enter a New Email Address: ";
-          cin >> edit_email;
-          cout << '\n';
-
-          storage_data[i][5] = edit_email;
-
-          cout << "Your New Email Address is: " << edit_email << '\n';
-          break;
-
-        default:
-          cout << "Data Point Cannot Be Found!\n";
-          break;
-        }
-      }
-      else if (storage_data[User_record][6] != ID)
-      {
-        cout << "ERROR: User ID " << ID << " not Found. \n";
-      }
+        cout << "ERROR: Data Points to Edit Cannot Be Found! Input Data First.\n";
     }
-  }
+    else
+    {
+        cout << "Enter your ID: ";
+        cin >> ID;
+
+        for (int i = 0; i < User_record; i++)
+        {
+
+            if (storage_data [i][6] == ID)
+            {
+                string edit_name, edit_gender, edit_contact, edit_address, edit_email;
+                int edit_age;
+                int edit_choice;
+
+                    cout << "Which Data Point Would You Want To Edit?\n";
+                    cout << "1. Name\n";
+                    cout << "2. Age\n";
+                    cout << "3. Gender\n";
+                    cout << "4. Contact Number\n";
+                    cout << "5. Address\n";
+                    cout << "6. Email Address\n";
+
+                    cin >> edit_choice;
+
+                    switch (edit_choice)
+                        {
+                            case 1: 
+                                cout << "Enter a New Name: ";
+                                cin >> edit_name;
+                                cout << '\n';
+                                
+                                storage_data [i][0] = edit_name;
+                                
+                                cout << "Your New Name is: " << edit_name << '\n';
+                                break;
+    
+                            case 2:
+                                cout << "Enter a New Age: ";
+                                cin >> edit_age;
+                                cout << '\n';
+
+                                storage_data [i][1] = to_string(edit_age);
+
+                                cout << "Your New Age is: " << edit_age << '\n';
+                                break;
+
+                            case 3:
+                                cout << "Enter a New Gender: ";
+                                cin >> edit_gender;
+                                cout << '\n';
+
+                                storage_data [i][2] = edit_gender;
+
+                                cout << "Your New Gender is: " << edit_gender << '\n';
+                                break;
+
+                            case 4:
+                                cout << "Enter a New Contact Number: ";
+                                cin >> edit_contact;
+                                cout << '\n';
+
+                                storage_data [i][3] = edit_contact;
+
+                                cout << "Your New Contact Number is: " << edit_contact << '\n';
+                                break;
+        
+                            case 5:
+                                cout << "Enter a New Address: ";
+                                cin >> edit_address;
+                                cout << '\n';
+
+                                storage_data [i][4] = edit_address;
+
+                                cout << "Your New Address is: " << edit_address << '\n';
+                                break;
+
+                            case 6:
+                                    cout << "Enter a New Email Address: ";
+                                    cin >> edit_email;
+                                    cout << '\n';
+
+                                    storage_data [i][5] = edit_email;
+
+                                    cout << "Your New Email Address is: " << edit_email << '\n';
+                                    break;
+    
+                                default:
+                                    cout << "Data Point Cannot Be Found!\n";
+                                    break;
+                        }
+            }
+            else if (storage_data [i][6] != ID)
+            {
+                cout << "ERROR: User ID " << ID << " not Found. \n";
+            }
+        }
+    }
+
 }
