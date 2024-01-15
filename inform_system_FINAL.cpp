@@ -175,7 +175,7 @@ void Add_Data()
 
 string Generate_ID()
 {
-  return to_string(2301 + User_record);
+  return to_string(4301 + User_record);
 }
 
 void Edit_Data(string ID)
