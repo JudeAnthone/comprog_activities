@@ -3,142 +3,150 @@
 
 using namespace std;
 
-const int maxPost = 10;
-const int maxComment = 10;
-const int maxSubcomment = 10;
+  const int maxPost = 10;
+  const int maxComment = 10;
+  const int maxSubcomment = 10;
 
-string post[maxPost];                                   // storing post in array
-string comments[maxPost][maxComment];                   // storing comment in 2d array
-string subcomments[maxPost][maxComment][maxSubcomment]; // storing subcomment in 3d array
+    string post[maxPost];                                   // storing post in array
+    string comments[maxPost][maxComment];                   // storing comment in 2d array
+    string subcomments[maxPost][maxComment][maxSubcomment]; // storing subcomment in 3d array
 
-int postCount = 0;                               // tracking number of post
-int commentCount[maxPost] = {0};                 // tracking comments per post
-int subComment_count[maxPost][maxComment] = {0}; // tracking sub comments per comment
+      int postCount = 0;                               // tracking number of post
+      int commentCount[maxPost] = {0};                 // tracking comments per post
+      int subComment_count[maxPost][maxComment] = {0}; // tracking sub comments per comment
 
-// function declarations
-void myMenu();
-void createPost();
-void addComment();
-void addSubcomment();
-void viewSpecificPost();
-void viewNewsfeed();
-void displayPost(int postID); // function for viewing post with all of its comment and subcomment
+        // function declarations
+        void myMenu();
+        void createPost();
+        void addComment();
+        void addSubcomment();
+        void viewSpecificPost();
+        void viewNewsfeed();
+        void displayPost(int postID); // function for viewing post with all of its comment and subcomment
 
-int main()
-{
-
-  int choice;
-
-  do
-  {
-    myMenu();
-    cin >> choice;
-
-    switch (choice)
+    int main()
     {
-    case 1:
-      createPost();
-      break;
 
-    case 2:
-      addComment();
-      break;
+      int choice;
 
-    case 3:
-      addSubcomment();
-      break;
+      do
+      {
+        myMenu();
+        cin >> choice;
 
-    case 4:
-      viewSpecificPost();
-      break;
+        switch (choice)
+        {
+        case 1:
+          createPost();
+          break;
 
-    case 5:
-      viewNewsfeed();
-      break;
+        case 2:
+          addComment();
+          break;
 
-    case 6:
-      cout << "EXITING PROGRAM \n";
-      break;
-    default:
-      cout << "ERROR: Invalid Choice! \n ";
+        case 3:
+          addSubcomment();
+          break;
+
+        case 4:
+          viewSpecificPost();
+          break;
+
+        case 5:
+          viewNewsfeed();
+          break;
+
+        case 6:
+          cout << "EXITING PROGRAM \n";
+          break;
+        default:
+          cout << "ERROR: Invalid Choice! \n ";
+        }
+
+      } while (choice != 6);
+
+      return 0;
     }
 
-  } while (choice != 6);
 
-  return 0;
-}
 
-void myMenu()
-{
+//MENU PANEL
+  void myMenu()
+  {
 
-  cout << "\n";
-  cout << "\n";
-  cout << "EPBI DAT COM\n";
-  cout << "\n";
-  cout << "\n";
+    cout << "\n";
+    cout << "\n";
+    cout << "EPBI DAT COM\n";
+    cout << "\n";
+    cout << "\n";
 
-  cout << "1. What's on your Mind? \n";
-  cout << "2. Comment \n";
-  cout << "3. Reply to a Comment \n";
-  cout << "4. View Post \n";
-  cout << "5. View All Post \n";
-  cout << "6. EXIT \n";
+    cout << "1. What's on your Mind? \n";
+    cout << "2. Comment \n";
+    cout << "3. Reply to a Comment \n";
+    cout << "4. View Post \n";
+    cout << "5. View All Post \n";
+    cout << "6. EXIT \n";
 
-  cout << "\n";
-  cout << "Enter your choice:";
-}
+    cout << "\n";
+    cout << "Enter your choice:";
+  }
 
 // function for creating a post
-void createPost()
-{
+    void createPost()
+    {
 
-  if (postCount >= maxPost)
-  {
-    cout << "ERROR: Limit post reached! \n";
-    return;
-  }
+      if (postCount >= maxPost)
+      {
+        cout << "ERROR: Limit post reached! \n";
+        return;
+      }
 
-  cout << "Whats on Your Mind?: \n";
-  cin.ignore();
-  getline(cin, post[postCount]);
-  cout << "Post Added! your Post ID is: " << postCount << '\n'; // the ID is per post count
-  postCount++;
-}
+      cout << "Whats on Your Mind?: \n";
+      cin.ignore();
+      getline(cin, post[postCount]);
+      cout << "Post Added! your Post ID is: " << postCount << '\n'; // the ID is per post count
+      postCount++;
+    }
 
-// adding comments
-void addComment()
-{
-  int postID;
+    // adding comments
+    void addComment()
+    {
+      int postID;
 
-  if (postCount == 0)
-  {
-    cout << "ERROR: Create a post first! \n";
-    return;
-  }
+        if (postCount == 0)
+        {
+          cout << "ERROR: Create a post first! \n";
+          return;
+        }
 
-  viewNewsfeed();
-  cout << "ENTER POST ID: ";
-  cin >> postID;
+      viewNewsfeed();
+      cout << "ENTER POST ID: ";
+      cin >> postID;
 
-  if (postID >= postCount || postID < 0)
-  {
-    cout << "ERROR: Invalid Post ID. Make sure that you entered a VALID ID! \n";
-    return;
-  }
+          if (postID >= postCount || postID < 0)
+          {
+            cout << "ERROR: Invalid Post ID. Make sure that you entered a VALID ID! \n";
+            return;
+          }
 
-  if (commentCount[postID] >= maxComment)
-  {
-    cout << "ERROR: Can't add comments. LIMIT REACHED! \n";
-    return;
-  }
+            if (commentCount[postID] >= maxComment)
+            {
+              cout << "ERROR: Can't add comments. LIMIT REACHED! \n";
+              return;
+            }
 
-  cout << "Enter your comment: ";
-  cin.ignore();
-  getline(cin, comments[postID][commentCount[postID]]);
-  cout << "Comment added Succesfully! ";
+      cout << "Enter your comment: ";
+      cin.ignore();
+      getline(cin, comments[postID][commentCount[postID]]);
+      cout << "Comment added Succesfully! ";
 
-  commentCount[postID]++;
-}
+      commentCount[postID]++;
+
+
+    // Display the updated post with the new comment that the user added
+      displayPost(postID);
+    }
+
 
 // adding subComments
 void addSubcomment()
@@ -153,15 +161,17 @@ void addSubcomment()
 
   viewNewsfeed();
 
-  cout << "Enter comment ID to add a reply.\n";
+  cout << "Enter POST ID to add a reply.\n";
   cin >> postID;
 
+//check if the ID inputted by the user is existing
   if (postID >= postCount || postID < 0)
   {
     cout << " ERROR: Invalid Post ID. Make sure that you entered a VALID ID.\n";
     return;
   }
 
+  //check if the post has a comment, if none, message will display
   if (commentCount[postID] == 0)
   {
     cout << "No comments availble for this post. Add a comment first\n";
@@ -169,7 +179,7 @@ void addSubcomment()
   }
 
   displayPost(postID);
-  cout << "Enter post ID to add a reply.\n";
+  cout << "Enter COMMENT ID to add a reply.\n";
   cin >> commentID;
 
   if (commentID >= commentCount[postID] || commentID < 0)
@@ -190,11 +200,16 @@ void addSubcomment()
   cout << "Your reply is added sucesfully!\n";
 
   subComment_count[postID][commentID]++;
+
+//display the updated post with the new subcomment-comment
+  displayPost(postID);
 }
+
 
 // view a specific post based on ID that the user INPUTS
 void viewSpecificPost()
 {
+  // check idn the ID has a post
   if (postCount == 0)
   {
     cout << "ERROR: No post for this ID." << '\n';
@@ -205,6 +220,7 @@ void viewSpecificPost()
   cout << "Enter the Post ID: ";
   cin >> postID;
 
+// displays if the ID is not existing
   if (postID >= postCount || postID < 0)
   {
     cout << "ERROR: INVALID POST ID! \n";
@@ -213,6 +229,7 @@ void viewSpecificPost()
 
   displayPost(postID);
 }
+
 
 // view all the posts (10 post max)
 void viewNewsfeed()
@@ -228,6 +245,8 @@ void viewNewsfeed()
     displayPost(i);
   }
 }
+
+
 
 // displaying a post with its components (comments and subcomments)
 void displayPost(int postID)
@@ -254,14 +273,18 @@ void displayPost(int postID)
   {
     for (int j = 0; j < commentCount[postID]; j++)
     {
+        // for comments
       cout << " Comment " << j << ": " << comments[postID][j] << '\n';
 
+        // reply to a comment
       if (subComment_count[postID][j] == 0)
       {
         cout << "No Replies.\n";
       }
+
       else
       {
+        // reply to a comment or a subcomment
         for (int k = 0; k < subComment_count[postID][j]; k++)
         {
           cout << "   Replies " << k << ": " << subcomments[postID][j][k] << "\n";
