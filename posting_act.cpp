@@ -1,4 +1,5 @@
- #include <iostream>
+
+#include <iostream>
 #include <string>
 #include <limits>
 
@@ -35,10 +36,11 @@ int main()
   {
     myMenu();
 
-    while (!(cin >> choice))
+    if (!(cin >> choice))
     {
       cout << "ERROR: Invalid Input. Please enter numbers 1-6 only. \n";
       clearInput();
+      continue;
     }
 
     switch (choice)
