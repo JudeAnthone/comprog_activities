@@ -1,4 +1,4 @@
-
+ 
 #include <iostream>
 #include <string>
 #include <limits>
@@ -27,21 +27,30 @@ void viewNewsfeed();
 void displayPost(int postID); // function for viewing post with all of its comment and subcomment
 void clearInput();
 
+// bagong shit
+bool user_validation(const string &_userInput);
+
 int main()
 {
 
+  string choiceTOstring;
   int choice;
 
   do
   {
     myMenu();
 
-    if (!(cin >> choice))
+    cin >> choiceTOstring;
+
+    if (!user_validation(choiceTOstring))
     {
-      cout << "ERROR: Invalid Input. Please enter numbers 1-6 only. \n";
-      clearInput();
+
+      cout << "ERROR: Invalid Input. 1-6 only. \n";
+      clearInput;
       continue;
     }
+
+    choice = stoi(choiceTOstring);
 
     switch (choice)
     {
@@ -71,10 +80,22 @@ int main()
     default:
       cout << "ERROR: Invalid Choice! \n ";
     }
-
   } while (choice != 6);
 
   return 0;
+}
+
+bool user_validation(const string &_userInput)
+{
+  if (_userInput.empty())
+    return false;
+  for (char input : _userInput)
+  {
+    if (!isdigit(input))
+      return false;
+  }
+
+  return true;
 }
 
 // MENU PANEL
